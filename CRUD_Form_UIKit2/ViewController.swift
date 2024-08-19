@@ -11,17 +11,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    /*
-    @IBOutlet weak var tableView: UITableView! = {
-        let table = UITableView()
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        return table
-    }()
-     
-     
-    */
-    
-    //@IBOutlet weak var tableView: UITableView!
     
     let tableView: UITableView = {
         let table = UITableView()
@@ -35,12 +24,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Memuat ulang data tabel
-        /*
-        let table = UITableView()
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.tableView = table
-        */
         
         getAllItems()
     }
@@ -83,12 +66,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.deselectRow(at: indexPath, animated: true)
         let item = models[indexPath.row]
         
+
+        //Alert For Edit, Delete dkk
         let sheet = UIAlertController(title: "Edit", message: nil, preferredStyle: .actionSheet)
         
         sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         sheet.addAction(UIAlertAction(title: "Edit", style: .default, handler: { _ in
             let alert = UIAlertController(title: "Edit Item", message: "Edit your item", preferredStyle: .alert)
             
+            // Kalau mereka press edit, nanti bakal muncul textField dan bisa save versi terbaru-nya
             alert.addTextField(configurationHandler: nil)
             alert.textFields?.first?.text = item.name
             alert.addAction(UIAlertAction(title: "Save", style: .cancel, handler: { [weak self] _ in

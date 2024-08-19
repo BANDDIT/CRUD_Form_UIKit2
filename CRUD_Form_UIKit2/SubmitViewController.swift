@@ -16,6 +16,8 @@ class SubmitViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Modify Desain untuk form Black Container di Storyboard
         formBlackContainer.layer.cornerRadius = 10
         formBlackContainer.layer.shadowColor = UIColor.black.cgColor
         formBlackContainer.layer.shadowOpacity = 0.2
